@@ -18,13 +18,4 @@ public class Client {
 
         return scanner.nextLine();
     }
-
-
-
-
-
-
-
-
-
 }
