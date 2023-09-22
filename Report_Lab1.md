@@ -95,7 +95,7 @@ not only dived into the core principles of object-oriented design but also witne
 The SOLID principles provided me with a structured framework to design and refactor the codebase, ensuring that othe
 project remained maintainable and extensible. 
 
-![img.png](img.png)
+![img.png](uploads/img.png)
 
 ![img_7.png](img_7.png)
 
@@ -105,7 +105,7 @@ project remained maintainable and extensible.
 
 ![img_5.png](img_5.png)
 
-![img_8.png](img_8.png)
+![img_8.png](uploads/img_8.png)
 
 ![img_3.png](img_3.png)
 
