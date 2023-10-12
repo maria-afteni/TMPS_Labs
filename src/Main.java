@@ -1,8 +1,9 @@
-import Client.Client_Action;
+import Client.ClientAction;
 
 public class Main {
     public static void main(String[] args) {
-        Client_Action client = new Client_Action();
-        client.Menu();
+
+        ClientAction client = new ClientAction();
+        client.menu();
     }
 }

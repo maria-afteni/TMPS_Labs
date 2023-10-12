@@ -2,8 +2,11 @@ package Domain.Models;
 
 import java.util.Map;
 
-abstract class Book {
+public abstract class Book {
+    String Name;
+    String Author;
 
-    abstract Map<String, String> Add_Book(Map<String, String> Books);
-    abstract boolean Book_exists(Map<String, String> Books);
+
+    public abstract Map<String, String> addBook(Map<String, String> Books);
+    public abstract boolean bookExists(Map<String, String> Books);
 }

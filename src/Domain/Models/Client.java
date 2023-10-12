@@ -5,14 +5,14 @@ import java.util.Scanner;
 public class Client {
     String Username;
 
-    public String Set_User_Username(){
+    public String setUserUsername(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Username:");
         Username = scanner.nextLine();
         return Username;
     }
 
-    public String Set_User_Password(){
+    public String setUserPassword(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Password:");
 

@@ -1,6 +1,7 @@
-package Domain.Factory;
+package Domain.Production;
 
 import Domain.Models.Client;
+import Domain.Production.Patterns.Creational.ClientBuilder;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -10,7 +11,7 @@ import java.util.*;
 
 public class ClientAuthorization {
 
-    public boolean Validate_Username(String Username, Map<String, String> Credentials){
+    public boolean validateUsername(String Username, Map<String, String> Credentials){
         boolean username = false;
         boolean u_equals = false;
 
@@ -22,47 +23,46 @@ public class ClientAuthorization {
             }
         }
 
-
         if (!u_equals){
             username = true;
         }
-
-
-
         return username;
     }
 
 
-    public Map<String, String> Sing_In(Map<String, String> Credentials){
+    public Map<String, String> singIn(Map<String, String> Credentials){
         Client c = new Client();
-        String Username = c.Set_User_Username();
-        String Password = Hash_Password(c.Set_User_Password());
-        if(Credentials.isEmpty() || Validate_Username(Username, Credentials)) {
-            Credentials.put(Username, Password);
+        String username = c.setUserUsername();
+        String password = hashPassword(c.setUserPassword());
+        ClientBuilder.clientBuilder client = new ClientBuilder.clientBuilder()
+                .setUsername(username)
+                .setPassword(password);
+        if(Credentials.isEmpty() || validateUsername(username, Credentials)) {
+            Credentials.put(username, password);
             System.out.println("Signed in successfully!");
         }
         return Credentials;
     }
 
-    public boolean Log_in(Map<String, String> Credentials){
+    public boolean logIn(Map<String, String> Credentials){
         boolean log_in = false;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Username:");
         String username = scanner.nextLine();
         System.out.println("Password:");
         String password = scanner.nextLine();
-        String hashedPassword = Hash_Password(password);
+        String hashedPassword = hashPassword(password);
 
         if(Credentials.containsKey(username) && Objects.equals(Credentials.get(username), hashedPassword)){
             log_in = true;
             System.out.println("Logged in successfully");
         }else{
-            System.out.println("!! Failed to logg in");
+            System.out.println("!! Failed to log in");
         }
         return log_in;
     }
 
-    public String Hash_Password(String Password)  {
+    public String hashPassword(String Password)  {
         SecureRandom random =  new SecureRandom();
         byte[] salt = new byte[16];
         String hashedPassword;

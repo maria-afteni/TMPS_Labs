@@ -95,20 +95,20 @@ not only dived into the core principles of object-oriented design but also witne
 The SOLID principles provided me with a structured framework to design and refactor the codebase, ensuring that othe
 project remained maintainable and extensible. 
 
-![img.png](uploads/img.png)
+![img.png](../uploads/img.png)
 
-![img_7.png](img_7.png)
+![img_7.png](../uploads/img_7.png)
 
-![img_1.png](img_1.png)
+![img_1.png](../uploads/img_1.png)
 
-![img_2.png](img_2.png)
+![img_2.png](../uploads/img_2.png)
 
-![img_5.png](img_5.png)
+![img_5.png](../uploads/img_5.png)
 
-![img_8.png](uploads/img_8.png)
+![img_8.png](../uploads/img_8.png)
 
-![img_3.png](img_3.png)
+![img_3.png](../uploads/img_3.png)
 
-![img_4.png](img_4.png)
+![img_4.png](../uploads/img_4.png)
 
-![img_6.png](img_6.png)
+![img_6.png](../uploads/img_6.png)
