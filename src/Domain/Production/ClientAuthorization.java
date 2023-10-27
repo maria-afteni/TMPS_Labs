@@ -44,7 +44,7 @@ public class ClientAuthorization {
         return Credentials;
     }
 
-    public boolean logIn(Map<String, String> Credentials){
+    public String logIn(Map<String, String> Credentials){
         boolean log_in = false;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Username:");
@@ -59,7 +59,7 @@ public class ClientAuthorization {
         }else{
             System.out.println("!! Failed to log in");
         }
-        return log_in;
+        return username;
     }
 
     public String hashPassword(String Password)  {
@@ -78,5 +78,23 @@ public class ClientAuthorization {
         hashedPassword = no.toString(16);
 
         return hashedPassword;
+    }
+
+    public boolean checkIfAdmin(String username){
+        String role = "";
+        boolean isAdmin = false;
+        int i = 0;
+        for (char s : username.toCharArray()){
+            role = role + s;
+            i++;
+            if (i == 5){
+                break;
+            }
+        }
+
+        if (role.equalsIgnoreCase("admin")){
+            isAdmin = true;
+        }
+        return isAdmin;
     }
 }

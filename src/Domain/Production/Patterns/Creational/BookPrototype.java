@@ -7,5 +7,7 @@ public interface BookPrototype{
     Map<String, String> addBook(Map<String, String> bookDatabase);
     boolean bookExists(Map<String, String> bookDatabase);
     void viewBooks(Map<String, String> bookDatabase);
+
+    void viewOrders();
 }
 

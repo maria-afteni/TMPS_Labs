@@ -16,26 +16,32 @@ public class ClientSingleton {
     }};
 
     private ClientSingleton(){
+        String username;
         Scanner scanner = new Scanner(System.in);
         this.logged = false;
-        while(!logged) {
-            System.out.println("\n1. Sign in \n2. Log in");
-            int option = scanner.nextInt();
-            switch (option) {
-                case 1 -> credentials = c1.singIn(credentials);
-                case 2 -> {
-                    assert credentials != null;
-                    this.logged = c1.logIn(credentials);
+        System.out.println("\n1. Sign in \n2. Log in");
+        int option = scanner.nextInt();
+        switch (option) {
+            case 1 -> credentials = c1.singIn(credentials);
+            case 2 -> {
+                assert credentials != null;
+                username = c1.logIn(credentials);
+                if (!username.isEmpty() && c1.checkIfAdmin(username)){
+                    this.logged = true;
                 }
+
             }
         }
     }
-
     public static synchronized ClientSingleton getInstance(){
         if (instance == null){
             instance = new ClientSingleton();
         }
 
         return instance;
+    }
+
+    public boolean getStatus(){
+        return logged;
     }
 }

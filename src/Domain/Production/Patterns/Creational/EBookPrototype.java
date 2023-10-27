@@ -45,4 +45,8 @@ public class EBookPrototype implements BookPrototype {
             id++;
         }
     }
+
+    @Override
+    public void viewOrders() {
+    }
 }

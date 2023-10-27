@@ -1,9 +1,10 @@
-import Client.ClientAction;
+import Domain.Production.Patterns.Structural.Facade.BookstoreFacade;
+import Domain.Production.Patterns.Structural.Facade.BookstoreService;
 
 public class Main {
     public static void main(String[] args) {
-
-        ClientAction client = new ClientAction();
-        client.menu();
+        BookstoreService service = new BookstoreService();
+        BookstoreFacade facade = new BookstoreFacade(service);
+        facade.menu();
     }
 }

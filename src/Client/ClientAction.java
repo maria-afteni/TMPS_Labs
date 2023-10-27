@@ -2,6 +2,8 @@ package Client;
 
 import Domain.Models.Book;
 import Domain.Production.Patterns.Creational.*;
+import Domain.Production.Patterns.Structural.Proxy.BookstoreProxy;
+import Domain.Production.Patterns.Structural.Proxy.IBookstoreAccess;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,9 +27,10 @@ public class ClientAction {
         Scanner scanner = new Scanner(System.in);
 
         ClientSingleton client = ClientSingleton.getInstance();
-        if (client != null){
-            logged = true;
-        }
+        logged = client.getStatus();
+
+        IBookstoreAccess bookstore = new BookstoreProxy(logged);
+        bookstore.accessProgram();
 
 
         while(logged){
