@@ -1,8 +1,8 @@
 package Domain.Production.Patterns.Structural.Composite;
 
 public class BookOrder extends OrderComponent {
-    private String title;
-    private double price;
+    final private String title;
+    final private double price;
 
     public BookOrder(String title, double price) {
         this.title = title;

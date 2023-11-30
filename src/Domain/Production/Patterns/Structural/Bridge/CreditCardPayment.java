@@ -6,7 +6,7 @@ public class CreditCardPayment extends PaymentMethod {
     }
 
     @Override
-    public void makePayment(double amount) {
-        paymentProcessor.processPayment(amount);
+    public boolean makePayment(double amount) {
+        return paymentProcessor.processPayment(amount);
     }
 }

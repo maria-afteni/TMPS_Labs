@@ -7,5 +7,5 @@ public abstract class PaymentMethod {
         this.paymentProcessor = paymentProcessor;
     }
 
-    public abstract void makePayment(double amount);
+    public abstract boolean makePayment(double amount);
 }

@@ -1,6 +1,6 @@
 package Domain.Production.Patterns.Structural.Composite;
 
-abstract class OrderComponent {
+public abstract class OrderComponent {
     abstract double getTotalPrice();
     abstract void display();
 }

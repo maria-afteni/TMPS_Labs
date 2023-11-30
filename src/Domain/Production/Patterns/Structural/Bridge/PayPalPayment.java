@@ -6,8 +6,8 @@ public class PayPalPayment extends PaymentMethod {
     }
 
     @Override
-    public void makePayment(double amount) {
-        paymentProcessor.processPayment(amount);
+    public boolean makePayment(double amount) {
+        return paymentProcessor.processPayment(amount);
 
     }
 }

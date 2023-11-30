@@ -44,7 +44,8 @@ public class BookstoreService {
             1. Add Ebook to database
             2. Verify if book is in database
             3. View Ebooks database
-            4. Back""");
+            4. Wishlist
+            5. Back""");
         int option = scanner.nextInt();
 
         switch (option) {
@@ -64,6 +65,7 @@ public class BookstoreService {
                 }
             }
             case 3 -> ebookManager.viewBooks(eBooks);
+            case 4 -> ebookManager.wishlist();
         }
     }
 
@@ -76,7 +78,8 @@ public class BookstoreService {
             2. Verify if book is in database
             3. View physical books database
             4. View pending order
-            5. Back""");
+            5. Wishlist
+            6. Back""");
         int option = scanner.nextInt();
 
         switch (option) {
@@ -97,6 +100,7 @@ public class BookstoreService {
             }
             case 3 -> physicalBookManager.viewBooks(physicalBooks);
             case 4 -> physicalBookManager.viewOrders();
+            case 5 -> physicalBookManager.wishlist();
         }
     }
 }

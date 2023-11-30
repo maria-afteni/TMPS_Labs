@@ -1,5 +1,10 @@
 package Domain.Production.Patterns.Creational;
 
+import Domain.Production.Patterns.Behavioral.Command.AddToWishlist;
+import Domain.Production.Patterns.Behavioral.Command.IWishlistCommand;
+import Domain.Production.Patterns.Behavioral.Command.RemoveFromWishlist;
+import Domain.Production.Patterns.Behavioral.Command.Wishlist;
+
 import java.util.Map;
 import java.util.Scanner;
 
@@ -48,5 +53,16 @@ public class EBookPrototype implements BookPrototype {
 
     @Override
     public void viewOrders() {
+    }
+
+    @Override
+    public void wishlist() {
+        Wishlist wishlist = new Wishlist();
+
+        IWishlistCommand addToWishlist = new AddToWishlist(wishlist, "Orlando");
+        IWishlistCommand removeFromWishlist = new RemoveFromWishlist(wishlist, "The Stranger");
+
+        addToWishlist.execute();
+        removeFromWishlist.execute();
     }
 }

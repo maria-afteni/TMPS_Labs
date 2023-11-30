@@ -1,11 +1,18 @@
 package Domain.Production.Patterns.Creational;
 
+import Domain.Production.Patterns.Behavioral.Command.AddToWishlist;
+import Domain.Production.Patterns.Behavioral.Command.IWishlistCommand;
+import Domain.Production.Patterns.Behavioral.Command.RemoveFromWishlist;
+import Domain.Production.Patterns.Behavioral.Command.Wishlist;
+import Domain.Production.Patterns.Behavioral.Strategy.IPayStrategy;
+import Domain.Production.Patterns.Behavioral.Strategy.PayStrategy;
 import Domain.Production.Patterns.Structural.Bridge.*;
 import Domain.Production.Patterns.Structural.Composite.BookOrder;
 import Domain.Production.Patterns.Structural.Composite.CompositeOrder;
 
 import java.util.Map;
 import java.util.Scanner;
+import java.util.WeakHashMap;
 
 public class PhysicalBookPrototype implements BookPrototype {
 
@@ -55,7 +62,7 @@ public class PhysicalBookPrototype implements BookPrototype {
     public void viewOrders() {
         BookOrder book1 = new BookOrder("Orlando", 15.99);
         BookOrder book2 = new BookOrder("The Stranger", 12.49);
-
+        boolean payed = false;
 
         CompositeOrder cart = new CompositeOrder();
         cart.addOrder(book1);
@@ -75,10 +82,33 @@ public class PhysicalBookPrototype implements BookPrototype {
         PaymentMethod creditCardPayment = new CreditCardPayment(creditCardProcessor);
         PaymentMethod paypalPayment = new PayPalPayment(paypalProcessor);
 
+        IPayStrategy payStrategy = new PayStrategy();
+
         System.out.println("\nPayments:");
-        creditCardPayment.makePayment(15.99);
-        paypalPayment.makePayment(12.48);
+
+        payed = creditCardPayment.makePayment(15.99);
+        if(payStrategy.pay(payed)){
+            payStrategy.collectPaymentDetails(payed, "Credit Card");
+        }
+
+        payed = paypalPayment.makePayment(12.48);
+        if(payStrategy.pay(payed)){
+            payStrategy.collectPaymentDetails(payed, "PayPal");
+        }
     }
+
+    @Override
+    public void wishlist() {
+        Wishlist wishlist = new Wishlist();
+
+        IWishlistCommand addToWishlist = new AddToWishlist(wishlist, "Orlando");
+        IWishlistCommand removeFromWishlist = new RemoveFromWishlist(wishlist, "The Stranger");
+
+        addToWishlist.execute();
+        removeFromWishlist.execute();
+    }
+
+
 
 
 }

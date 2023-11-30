@@ -1,19 +1,22 @@
 package Domain.Production.Patterns.Structural.Facade;
 
+import Domain.Production.Patterns.Behavioral.Template_Method.BookstoreServiceTemplate;
+
 import java.util.Scanner;
 
 public class BookstoreFacade {
     private BookstoreService bookstoreService;
+    private BookstoreServiceTemplate bookstoreServiceTemplate;
 
-    public BookstoreFacade(BookstoreService bookstoreService) {
-        this.bookstoreService = bookstoreService;
+    public BookstoreFacade(BookstoreServiceTemplate bookstoreServiceTemplate) {
+        this.bookstoreServiceTemplate = bookstoreServiceTemplate;
     }
 
     public void menu() {
         Scanner scanner = new Scanner(System.in);
         authenticate();
 
-        while (bookstoreService.isUserLoggedIn()) {
+        while (bookstoreServiceTemplate.isUserLoggedIn()) {
             System.out.println("\nChoose book type:\n1. Ebook\n2. Physical book\n3. Exit");
             int option = scanner.nextInt();
 
@@ -29,18 +32,18 @@ public class BookstoreFacade {
     }
 
     private void authenticate() {
-        bookstoreService.authenticate();
+        bookstoreServiceTemplate.authenticate();
     }
 
     private void logout() {
-        bookstoreService.logout();
+        bookstoreServiceTemplate.logout();
     }
 
     private void handleEbookMenu() {
-        bookstoreService.handleEbookMenu();
+        bookstoreServiceTemplate.handleEbookMenu();
     }
 
     private void handlePhysicalBookMenu() {
-        bookstoreService.handlePhysicalBookMenu();
+        bookstoreServiceTemplate.handlePhysicalBookMenu();
     }
 }

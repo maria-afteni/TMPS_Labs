@@ -9,5 +9,7 @@ public interface BookPrototype{
     void viewBooks(Map<String, String> bookDatabase);
 
     void viewOrders();
+    void wishlist();
+
 }
 
